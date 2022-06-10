@@ -1,4 +1,4 @@
-package pl.mikolaj;
+package pl.mikolaj.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @org.springframework.stereotype.Controller
-public class Controller {
+public class HelloController {
 
     @GetMapping("/hello")
     @ResponseBody
