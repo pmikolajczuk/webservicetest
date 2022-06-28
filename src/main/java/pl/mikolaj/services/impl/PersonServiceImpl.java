@@ -25,4 +25,14 @@ public class PersonServiceImpl implements PersonService {
             return null;
         }
     }
+
+    @Override
+    public Person findById(int id) {
+        try {
+            return personDao.findById(id);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

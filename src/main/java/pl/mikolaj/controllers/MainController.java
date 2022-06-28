@@ -2,6 +2,7 @@ package pl.mikolaj.controllers;
 
 import org.springframework.web.bind.annotation.*;
 import pl.mikolaj.beans.Car;
+import pl.mikolaj.beans.Person;
 import pl.mikolaj.beans.PersonDTO;
 import pl.mikolaj.services.CarService;
 import pl.mikolaj.services.PersonService;
@@ -27,7 +28,7 @@ public class MainController {
     }
 
     @GetMapping("/cars/{id}")
-    public Car findById(@PathVariable int id) {
+    public Car findCarById(@PathVariable int id) {
         return carService.findById(id);
     }
 
@@ -51,7 +52,13 @@ public class MainController {
     public List<PersonDTO> people() {
         return personService.getAllPeople()
                 .stream()
-                .map(PersonDTO::map)
+                .map(Person::toPersonDTO)
                 .collect(Collectors.toList());
+    }
+
+    @GetMapping("/people/{id}")
+    public PersonDTO findPersonById(@PathVariable int id) {
+        return personService.findById(id)
+                .toPersonDTO();
     }
 }

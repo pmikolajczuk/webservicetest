@@ -7990,21 +7990,5 @@
     "color": "Puce",
     "year": 2006,
     "price": 63299.65
-  },
-  {
-    "id": 1001,
-    "make": "Honda",
-    "model": "Civic",
-    "color": "Red",
-    "year": 2018,
-    "price": 95000.0
-  },
-  {
-    "id": 1002,
-    "make": "Honda",
-    "model": "Civic",
-    "color": "Red",
-    "year": 2018,
-    "price": 95000.0
   }
-]
+  ]
