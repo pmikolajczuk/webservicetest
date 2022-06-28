@@ -2,6 +2,7 @@ package pl.mikolaj.controllers;
 
 import org.springframework.web.bind.annotation.*;
 import pl.mikolaj.beans.Car;
+import pl.mikolaj.beans.CarDTO;
 import pl.mikolaj.beans.Person;
 import pl.mikolaj.beans.PersonDTO;
 import pl.mikolaj.services.CarService;
@@ -23,13 +24,17 @@ public class MainController {
     }
 
     @GetMapping("/cars")
-    public List<Car> cars() {
-        return carService.getAllCars();
+    public List<CarDTO> cars() {
+        return carService.getAllCars()
+                .stream()
+                .map(CarDTO::map)
+                .toList();
     }
 
     @GetMapping("/cars/{id}")
-    public Car findCarById(@PathVariable int id) {
-        return carService.findById(id);
+    public CarDTO findCarById(@PathVariable int id) {
+        return carService.findById(id)
+                .toCarDTO();
     }
 
     @PostMapping("/cars")

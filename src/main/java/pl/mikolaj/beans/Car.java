@@ -86,4 +86,8 @@ public class Car {
                 ", price=" + price +
                 '}';
     }
+
+    public CarDTO toCarDTO() {
+        return CarDTO.map(this);
+    }
 }
