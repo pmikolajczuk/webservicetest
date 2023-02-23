@@ -1,19 +1,18 @@
 package pl.mikolaj.cotrollers;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import pl.mikolaj.beans.CarDTO;
-import pl.mikolaj.controllers.MainController;
-import pl.mikolaj.dao.CarDao;
-import pl.mikolaj.dao.PersonDao;
-import pl.mikolaj.dao.impl.CarDaoImpl;
-import pl.mikolaj.dao.impl.PersonDaoImpl;
-import pl.mikolaj.services.CarService;
-import pl.mikolaj.services.PersonService;
-import pl.mikolaj.services.impl.CarServiceImpl;
-import pl.mikolaj.services.impl.PersonServiceImpl;
+import pl.mikolaj.webservicetest.beans.CarDTO;
+import pl.mikolaj.webservicetest.controllers.MainController;
+import pl.mikolaj.webservicetest.dao.CarDao;
+import pl.mikolaj.webservicetest.dao.PersonDao;
+import pl.mikolaj.webservicetest.dao.impl.CarDaoImpl;
+import pl.mikolaj.webservicetest.dao.impl.PersonDaoImpl;
+import pl.mikolaj.webservicetest.services.CarService;
+import pl.mikolaj.webservicetest.services.PersonService;
+import pl.mikolaj.webservicetest.services.impl.CarServiceImpl;
+import pl.mikolaj.webservicetest.services.impl.PersonServiceImpl;
 
 public class MainControllerTest {
 
