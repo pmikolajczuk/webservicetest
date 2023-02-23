@@ -1,4 +1,4 @@
-package pl.mikolaj.webservicetest.utils;
+package pl.mikolaj.utils;
 
 import java.util.function.Consumer;
 

@@ -1,4 +1,4 @@
-package pl.mikolaj.webservicetest.utils;
+package pl.mikolaj.utils;
 
 @FunctionalInterface
 public interface CheckedConsumer<T> {

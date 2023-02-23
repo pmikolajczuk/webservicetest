@@ -1,14 +1,13 @@
 package pl.mikolaj.webservicetest.services.impl;
 
 import org.springframework.stereotype.Service;
+import pl.mikolaj.utils.Utils;
 import pl.mikolaj.webservicetest.beans.Person;
 import pl.mikolaj.webservicetest.dao.PersonDao;
 import pl.mikolaj.webservicetest.services.PersonService;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
-import java.util.function.Supplier;
 
 @Service
 public class PersonServiceImpl implements PersonService {
@@ -30,7 +29,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public List<Person> getAllPeople(int pageSize, int pageIndex) {
-        return getPage(this::getAllPeople, pageSize, pageIndex);
+        return Utils.getPage(this::getAllPeople, pageSize, pageIndex);
     }
 
     @Override
@@ -53,22 +52,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public List<Person> findByIds(List<Integer> ids, int pageSize, int pageIndex) {
-        return getPage(() -> findByIds(ids), pageSize, pageIndex);
+        return Utils.getPage(() -> findByIds(ids), pageSize, pageIndex);
     }
 
-    private List<Person> getPage(Supplier<List<Person>> dataProvider, int pageSize, int pageIndex) {
-        int firstItemIndex = pageSize * pageIndex;
-        int lastItemIndex = pageSize * (pageIndex + 1) ;
-        List<Person> allPeople = dataProvider.get();
-
-        if(firstItemIndex >= allPeople.size()) {
-            return Collections.emptyList();
-        }
-
-        if(lastItemIndex > allPeople.size()) {
-            lastItemIndex = allPeople.size();
-        }
-
-        return allPeople.subList(firstItemIndex, lastItemIndex);
-    }
 }

@@ -2,7 +2,7 @@ package pl.mikolaj.webservicetest.services.impl;
 
 import pl.mikolaj.webservicetest.beans.Person;
 import pl.mikolaj.webservicetest.services.PersonService;
-import pl.mikolaj.webservicetest.utils.Unchecked;
+import pl.mikolaj.utils.Unchecked;
 
 import java.io.*;
 import java.util.*;
