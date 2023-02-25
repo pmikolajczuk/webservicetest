@@ -30,24 +30,28 @@ public class ExportServiceImpl implements pl.mikolaj.webservicetest.services.Exp
 
     private void doExportPeople(Function<Integer, List<Person>> dataProvider) {
         System.out.println("Starting people export");
+        Map<String, Writer> genderToWriter = null;
+        try {
+            genderToWriter = Arrays.stream(Gender.values())
+                    .collect(Collectors.toMap(Gender::getCamelCase, Unchecked.function(this::createWriter)));
 
-        Map<String, Writer> genderToWriter = Arrays.stream(Gender.values())
-                .collect(Collectors.toMap(Gender::getCamelCase, this::createWriter));
+            genderToWriter.values().forEach(Unchecked.consumer(this::writeHeader));
 
-        genderToWriter.values().forEach(this::writeHeader);
-
-        int count = 0;
-        for (int i = 0; true; i++) {
-            List<Person> persons = dataProvider.apply(i);
-            if (persons.isEmpty()) {
-                break;
+            int count = 0;
+            for (int i = 0; true; i++) {
+                List<Person> persons = dataProvider.apply(i);
+                if (persons.isEmpty()) {
+                    break;
+                }
+                Map<String, Writer> finalGenderToWriter = genderToWriter;
+                persons.forEach(person -> exportPerson(person, finalGenderToWriter));
+                count += persons.size();
+                System.out.println("Exported " + count + " persons");
             }
-            persons.forEach(person -> exportPerson(person, genderToWriter));
-            count += persons.size();
-            System.out.println("Exported " + count + " persons");
+        } finally {
+            genderToWriter.values().forEach(Unchecked.consumer(Writer::close));
         }
-        genderToWriter.values().forEach(Unchecked.consumer(Writer::close));
-        System.out.println("Finished people export, exported: " + count + " persons");
+        System.out.println("Finished people export");
     }
 
     private void exportPerson(Person person, Map<String, Writer> genderToWriter) {
@@ -61,24 +65,16 @@ public class ExportServiceImpl implements pl.mikolaj.webservicetest.services.Exp
         return person.getId() + ";" + person.getFirstName() + ";" + person.getAge() + "\n";
     }
 
-    private Writer createWriter(Gender gender) {
-        try {
-            return new FileWriter("export/" + gender.getFileNamePrefix() + "_" + createFileNameSuffix());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    private Writer createWriter(Gender gender) throws IOException {
+        return new FileWriter("export/" + gender.getFileNamePrefix() + "_" + createFileNameSuffix());
     }
 
     private String createFileNameSuffix() {
         return String.valueOf(new Date().getTime());
     }
 
-    private void writeHeader(Writer writer) {
-        try {
-            writer.write("id;firstName;age\n");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    private void writeHeader(Writer writer) throws IOException {
+        writer.write("id;firstName;age\n");
     }
 
     enum Gender {

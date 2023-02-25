@@ -1,0 +1,31 @@
+[
+  {
+    "code": "001",
+    "productReferences": [
+      {
+        "type": "ACCESSORIES",
+        "source": null,
+        "target": {
+          "code": "002",
+          "productReferences": null
+        }
+      },
+      {
+        "type": "ACCESSORIES",
+        "source": null,
+        "target": {
+          "code": "003",
+          "productReferences": null
+        }
+      },
+      {
+        "type": "ACCESSORIES",
+        "source": null,
+        "target": {
+          "code": "004",
+          "productReferences": null
+        }
+      }
+    ]
+  }
+]

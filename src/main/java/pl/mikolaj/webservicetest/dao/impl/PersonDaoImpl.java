@@ -1,7 +1,7 @@
 package pl.mikolaj.webservicetest.dao.impl;
 
-import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.springframework.stereotype.Repository;
 import pl.mikolaj.webservicetest.beans.Person;
 import pl.mikolaj.webservicetest.dao.PersonDao;

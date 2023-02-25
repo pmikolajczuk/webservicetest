@@ -1,0 +1,37 @@
+[
+  {
+	  "type": "ACCESSORIES",
+	  "source": "001",
+	  "target": "011"
+  },
+  {
+	  "type": "ACCESSORIES",
+	  "source": "001",
+	  "target": "012"
+  },
+  {
+	  "type": "SERVICE",
+	  "source": "001",
+	  "target": "013"
+  },
+  {
+	  "type": "ACCESSORIES",
+	  "source": "002",
+	  "target": "011"
+  },
+  {
+	  "type": "ACCESSORIES",
+	  "source": "002",
+	  "target": "012"
+  },
+  {
+	  "type": "CONSUMABLES",
+	  "source": "001",
+	  "target": "014"
+  },
+  {
+	  "type": "SPAREPART",
+	  "source": "003",
+	  "target": "015"
+  }
+]
